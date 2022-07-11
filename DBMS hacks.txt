@@ -1,0 +1,288 @@
+DBMS
+
+A Database Management System (DBMS) is software designed 
+to store, retrieve, define, and manage data in a database.
+->
+123.45
+precision-5
+scale-2
+->
+CREATE TABLE Student (
+    StudentId INTEGER, 
+    FName VARCHAR2(10), 
+    DOJ DATE DEFAULT SYSDATE);
+
+* by default it will take system date
+
+
+->CREATE TABLE Student ( 
+    StudentId INTEGER ;,
+    FName VARCHAR2(10), 
+    ContactNo NUMBER(10)
+    PRIMARY KEY(StudentId));
+
+->Adding primary key after creating table
+    
+   ALTER TABLE Students 	  
+   ADD PRIMARY KEY (ID);
+
+->Adding foreign key constarint while creating table
+
+CREATE TABLE Students ( 	 
+    ID INT NOT NULL
+    Name VARCHAR(255)
+    LibraryID INT
+    PRIMARY KEY (ID)
+    FOREIGN KEY (Library_ID) REFERENCES Library(LibraryID)
+);
+
+
+
+** we can have only one primary key.
+
+ALTER COMMAND
+
+To add a column :
+
+ALTER TABLE Customers ADD Email varchar(255);
+
+To drop a column :
+
+ALTER TABLE Customers DROP(Email);
+
+To modify its datatype:
+
+ALTER TABLE Trainee MODIFY Email VARCHAR2(25);
+
+UPDATE :
+
+Update employee set salary = salary *1.2 , bonus = 100
+
+DELETE :
+
+DELETE FROM Employee WHERE Dept ='ETA' and Manager = 2;
+
+GRANT privileges_names ON object TO user;
+
+SQL GRANT is a command used to provide access or privileges on the database objects to the users.
+
+Revoke command withdraw user privileges on database objects if any granted
+
+revoke privilege_name on object_name
+from {user_name | public | role_name}
+
+
+
+
+Start Pattern :
+
+SELECT ID, ENAME FROM Employee WHERE ENAME LIKE 'E%'
+
+End Pattern :
+
+SELECT ID, ENAME FROM Employee WHERE ENAME LIKE '%r'
+
+Anywhere Pattern :
+
+SELECT ID, ENAME FROM Employee WHERE ENAME LIKE '%m%'
+
+nth position :
+
+SELECT ID, ENAME FROM Employee WHERE ENAME LIKE '_a%'
+
+
+**suppose you are deleting a record in foreign key column 
+you first need to delete that in child table.
+
+without where all records are deleted
+
+TO_CHAR(value, format):
+
+Converts a number or a date to a string. Use this function for 
+formatting dates and numbers.
+
+TO_DATE (value, format):
+
+Converts a string to a date.
+
+TO_NUMBER (value, format)	
+
+Converts a string to a number.
+
+CONVERSIONS:
+
+
+ACCDT
+
+8-JAN-13
+     ||
+DAY	MON
+08	01
+
+SELECT TO_CHAR(Accdt,'dd')"DAY", TO_CHAR(Accdt,'mm')"MON" FROM Customer
+
+-->Aggregate functions :
+
+Aggregate functions operate on multiple rows to return a single row.
+
+All aggregate functions ignore NULL values except COUNT(*).
+
+NVL(value1, value2)
+
+Substitutes value1 by value2 if value1 is NULL. The data type of value1 and value2 must be same.
+
+USER
+
+Returns the current logged in user
+
+-->ORDER BY :
+
+Rows are sorted in ascending order if sort order is not specified.
+
+ORDER BY clause must be the last clause and can be used only in SELECT statement.
+
+Select ID, ENAME, DOJ, SALARY, DEPT, DESIGNATION FROM Employee ORDER BY 2
+
+here 2 means 2nd column.This is called positional sort.
+
+NULL is treated as highest value and appears at the end
+
+Which is the default ordering if ORDER BY is NOT provided?
+
+There is no default Ordering
+
+-->
+More than one columns can be ordered one within another. 
+The default order is ascending.
+
+-->
+A query that has a nested aggregate function must have a GROUP BY clause.
+
+-->
+JOINS are used to combine the data from multiple tables.
+
+Different types of joins are:
+
+1.Inner join.
+
+returns the records which have matching values in both tables 
+
+disadvantage:
+
+creates data redundancy
+
+syntax :
+
+select e1.c1,e1.c2,e2.c1,e2.c2
+from e1 inner join e2 on e1.c1=e2.c1
+
+
+2.Left  join.
+
+returns all the the records from left table and also those records which have matching values from right table.
+
+syntax :
+
+select e1.c1,e1.c2,e2.c1,e2.c2
+from e1 right join e2 on e1.c1=e2.c1
+
+
+3.Right join.
+
+returns all the the records from right table and also those records which have matching values from left table.
+
+syntax :
+
+select e1.c1,e1.c2,e2.c1,e2.c3 
+from e1 right join e2 on e1.c1=e2.c1
+
+4.Full join
+
+returns the records which have matching values either in left table or right table.
+
+syntax :
+
+select e1.c1,e1.c2,e2.c1,e2.c3 
+from e1 full join e2 on e1.c1=e2.c1
+
+5.Natural join 
+
+same like inner join but does not retrieve the matching column twice.
+
+advantage :
+
+eliminates data redundancy 
+
+-->
+
+Nested Queries :
+
+Single row equality operator :
+
+getting maximum salary employee details
+
+SELECT Id, EName, Salary, Dept FROM Employee
+ E1 WHERE Salary = (SELECT MAX(Salary) FROM
+ Employee E2)
+
+getting maximum salary of dept details
+
+SELECT DEPT FROM Employee GROUP BY DEPT HAVING SUM(Salary)
+ = (SELECT MAX(SUM(Salary)) FROM Employee GROUP BY Dept);
+
+Salaries greater than average salary
+
+SELECT EName,Dept FROM Employee WHERE Salary
+>(SELECT AVG(Salary) FROM Employee);
+
+** A subquery must be enclosed in brackets and can be used in SELECT, FROM, WHERE and HAVING clauses.
+
+NORMAL FORMS
+
+1NF:
+
+1.There should be no composite attributes.
+2. There should be no Multi-valued attributes.
+
+2NF:
+
+1.It shoud be in 1NF.
+2.It should not have partial dependency
+
+3NF:
+
+1.It should be in 2NF.
+2.It should not have Transitive dependency 
+
+**Look geeksforgeeks for clear idea of normal forms**
+
+
+acid PROPERTIES :
+
+Atomocity : A transaction should be a successful or fail but never stuck in between
+Consistency : All data is stored according to the defined ruels 
+Isolation : One tansaction should not effect the other transaction
+Durability : Data shuld not be lost in case of a power failure 
+
+Are NULL values same as that of zero or a blank space? 
+
+A NULL value is not at all same as that of zero or a blank space.
+NULL value represents a value which is unavailable, unknown whereas
+a zero is a number and blank space is a character.
+
+Write a SQL query to get the third highest salary of an employee from employee_table?
+
+SELECT * FROM `employee` ORDER BY `salary` DESC LIMIT 1 OFFSET 2;
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 

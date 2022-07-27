@@ -1,0 +1,21 @@
+Primary Key is a set of attributes (or attribute) which uniquely identify the tuples in relation or table.
+
+The primary key is a minimal super key, so there is one and only one primary key in any relationship. For example, 
+ 
+
+Student{ID, F_name, M_name, L_name, Age} 
+Here only ID can be primary key because the name, age and address can be same, but ID can’t be same. 
+
+A candidate key is a set of attributes (or attribute) which uniquely identify the tuples in relation or table. 
+
+As we know that Primary key is a minimal super key, so there is one and only one primary key in any relationship but there is more than one candidate key can take place.
+
+Candidate key’s attributes can contain a NULL value which opposes to the primary key. For example, 
+ 
+
+Student{ID, First_name, Last_name, Age} 
+Here we can see the two candidate keys ID and {First_name, Last_name, DOB}. 
+
+So here, there are present more than one candidate keys, which can uniquely identify a tuple in a relation. 
+
+It is not mandatory to define a primary key, but there cannot be a relationship without the candidate key.

@@ -1,0 +1,9 @@
+An artificial key is one that has no meaning to the business or organization.
+
+Artificial keys are permitted when
+
+1) no attribute has all the primary key properties, or
+
+2) The primary key is large and complex.
+
+For Example: Enrollment table from business point of view has (student, c1ass) combination as primary key. But this primary key is large and complex, so DBA decides to add row_id column as primary key. Here, row_id can also be called as Artificial Key.

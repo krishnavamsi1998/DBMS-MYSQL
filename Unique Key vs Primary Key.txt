@@ -1,0 +1,4 @@
+A primary key field can never have a NULL value as its value, 
+whereas a unique key can have one of its field values as NULL.
+
+A table cannot have more than one primary key, but a table can have more than one unique key.

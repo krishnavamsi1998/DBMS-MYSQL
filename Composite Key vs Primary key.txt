@@ -1,0 +1,1 @@
+Whenever a primary key consists of more than one attribute, it is known as a composite key. This key is also known as Concatenated Key.

@@ -1,0 +1,23 @@
+ Super Key is an attribute (or set of attributes) that is used to uniquely identifies all attributes in a relation.
+ 
+ It a super set of keys , and primary key is a minimal set of this super set
+
+ All super keys can’t be candidate keys but the reverse is true. In relation, a number of super keys is more than a number of candidate keys. 
+ 
+ We have a given relation R(A, B, C, D, E, F) and we shall check for super keys by following given dependencies: 
+ 
+
+Functional dependencies         Super key
+AB->CDEF                         YES
+CD->ABEF                         YES
+CB->DF                           NO
+D->BC                            NO 
+
+By Using key AB we can identify the rest of the attributes (CDEF) of the table. Similarly, Key CD. But, by using key CB we can only identify D and F, not A and E. Similarly key D. 
+
+Candidate Key: A candidate key is a set of attributes (or attributes) that uniquely identify the tuples in relation to or table.
+
+As we know the Primary key is a minimal super key, so there is one and only one primary key in any relationship but there is more than one candidate key that can take place.
+
+The candidate key’s attributes can contain a NULL value which opposes to the primary key. 
+

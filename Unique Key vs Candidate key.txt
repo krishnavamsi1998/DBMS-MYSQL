@@ -1,0 +1,8 @@
+Candidate Key is a column or combination of columns, which can be a Primary key for the Table.
+There may be multiple Candidate Keys In a Table.
+
+Any Candidate Key can be a Primary Key.
+
+Unique Key is a column which has unique value for each row, but it also allow nulls (Primary Key doesn't).
+
+Any confusions, feel free to ask.
